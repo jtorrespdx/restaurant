@@ -71,7 +71,7 @@
             $found_cuisine = null;
             $cuisines = Cuisine::getAll();
             foreach($cuisines as $cuisine) {
-                if ($cuisine_id == $search_id) {
+                if ($cuisine == $search_id) {
                     $found_cuisine = $cuisine;
                 }
             }

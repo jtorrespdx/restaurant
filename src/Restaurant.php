@@ -80,7 +80,7 @@
 
             static function deleteAll()
             {
-                $GLOBALS['DB']->{"DELETE FROM restaurants;"};
+                $GLOBALS['DB']->exec("DELETE FROM restaurants;");
             }
 
             static function findRestaurantName($search_restaurant)
