@@ -29,7 +29,7 @@
         function save()
         {
             $GLOBALS['DB']->exec("INSERT INTO cuisines (type) VALUES ('{$this->getType()}');");
-            $this->id = GLOBALS['DB']->lastInsertId();
+            $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
         function getRestaurants()

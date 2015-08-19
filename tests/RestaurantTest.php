@@ -105,7 +105,7 @@
             $price_range = 2;
             $neighborhood = "Buckman";
             $cuisine_id = $test_cuisine->getId();
-            $test_restaurant2 = new Restaurant($name2, $id, $cuisine_id, $price_range, $neighboorhood);
+            $test_restaurant2 = new Restaurant($name2, $id, $cuisine_id, $price_range, $neighborhood);
             $test_restaurant2->save();
 
             //act
@@ -161,10 +161,10 @@
             $test_restaurant->save();
 
             $name2 = "Jose's";
+            $cuisine_id = $test_cuisine->getId();
             $price_range = 2;
             $neighborhood = "Buckman";
-            $cuisine_id = $test_cuisine->getId();
-            $test_restaurant2 = new Restaurant($name2, $id, $cuisine_id, $price_range, $neighboorhood);
+            $test_restaurant2 = new Restaurant($name2, $id, $cuisine_id, $price_range, $neighborhood);
             $test_restaurant2->save();
 
             //act
