@@ -24,13 +24,15 @@
         function test_getId()
         {
             //arrange
-            $name = "Tacos";
+            $type = "Tacos";
             $id = null;
             $test_cuisine = new Cuisine($type, $id);
             $test_cuisine->save();
 
             $name = "Nathan's";
             $cuisine_id = $test_cuisine->getId();
+            $price_range = 1;
+            $neighborhood = "Felony Flats";
             $test_restaurant = new Restaurant($name, $id, $cuisine_id, $price_range, $neighborhood);
             $test_restaurant->save();
 
@@ -39,6 +41,93 @@
 
             //assert
             $this->assertEquals(true, is_numeric($result));
+        }
+
+        function test_getCuisineId()
+        {
+            //arrange
+            $type = "Tacos";
+            $id = null;
+            $test_cuisine = new Cuisine($type, $id);
+            $test_cuisine->save();
+
+            $name = "Nathan's";
+            $cuisine_id = $test_cuisine->getId();
+            $price_range = 1;
+            $neighborhood = "Felony Flats";
+            $test_restaurant = new Restaurant($name, $id, $cuisine_id, $price_range, $neighborhood);
+            $test_restaurant->save();
+
+            //act
+            $result = $test_restaurant->getCuisineId();
+
+            //assert
+            $this->assertEquals(true, is_numeric($result));
+        }
+
+        function test_save()
+        {
+
+            //arrange
+            $type = "Tacos";
+            $id = null;
+            $test_cuisine = new Cuisine($type, $id);
+            $test_cuisine->save();
+
+            $name = "Nathan's";
+            $cuisine_id = $test_cuisine->getId();
+            $test_restaurant = new Restaurant($name, $id, $cuisine_id, $price_range, $neighborhood);
+
+            //act
+            $test_restaurant->save();
+
+            //assert
+            $result = Restaurant::getAll();
+            $this->assertEquals($test_restaurant, $result[0]);
+        }
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        function test_getAll()
+        {
+            //arrange
+            $type = "Tacos";
+            $id = null;
+            $test_cuisine = new Cuisine($type, $id);
+            $test_cuisine->save();
+
+            $name = "Nathan's";
+            $cuisine_id = $test_cuisine->getId();
+            $price_range = 1;
+            $neighborhood = "Felony Flats";
+            $test_restaurant = new Restaurant($name, $id, $cuisine_id, $price_range, $neighborhood);
+            $test_restaurant->save();
+
+            $name2 = "Jose's";
+            $price_range = 2;
+            $neighborhood = "Buckman";
+            $cuisine_id = $test_cuisine->getId();
+            $test_restaurant2 = new Restaurant($name2, $id, $cuisine_id, $price_range, $neighboorhood);
+            $test_restaurant2->save();
+
+            //act
+            $result = Restaurant::getAll();
+
+            //assert
+            $this->assertEquals([$test_name, $test_name2], $result);
         }
 
 
