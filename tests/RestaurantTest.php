@@ -192,7 +192,6 @@
             $test_restaurant->save();
 
             $new_name = "Natalies";
-            var_dump($new_name);
 
             //act
             $test_restaurant->update($new_name);
