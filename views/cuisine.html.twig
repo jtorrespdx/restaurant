@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>Restaurants</title>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+    </head>
+    <body>
+        <div class='container'>
+            <h1>{{ cuisines.getType }}</h1>
+
+            {% if restaurants is not empty %}
+                <p> Here are the restaurants:</p>
+                <ul>
+                    {% for restaurant in restaurants %}
+                        <li>{{ restaurant.getName }} {{ restaurant.getPriceRange }} {{ restaurant.getNeighborhood }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <h4>Add a restaurant</h4>
+
+            <form action='/restaurants' method='post' class="form-inline">
+                <div class='form-group'>
+
+                    <input id='cuisine_id' name='cuisine_id' type='hidden' value='{{ cuisines.getId }}'>
+                    <label for='name'>Restaurant Name:</label>
+                    <input id='name' name='name' class='form-control' type='text'>
+
+                    <br>
+
+                    <label for='price_range'>Price range (1-5):</label>
+                    <input id='price_range' name='price_range' class='form-control' type='text'>
+
+                    <br>
+
+                    <label for='neighborhood'>Neighborhood:</label>
+                    <input id='neighborhood' name='neighborhood' class='form-control' type='text'>
+                </div>
+
+                    <!--
+                    <label for='due_date'>Due Date : </label>
+                    <input id='due_date' name='due_date' type='date'/>
+                    -->
+
+                <button type='submit' class='btn btn-info'>Add restaurant</button>
+            </form>
+
+            <form action='/delete_restaurants' method='post'>
+                <button type='submit' class='btn btn-danger'>Clear list</button>
+            </form>
+
+            <p><a href='/'>Home</a></p>
+        </div>
+    </body>
+</html>

@@ -96,10 +96,22 @@
                 return $found_restaurants;
             }
 
-            function update($new_name)
+            function updateName($new_name)
             {
                 $GLOBALS['DB']->exec("UPDATE restaurants SET name = '{$new_name}' WHERE id = {$this->getId()};");
                 $this->setName($new_name);
+            }
+
+            function updatePriceRange($new_price_range)
+            {
+                $GLOBALS['DB']->exec("UPDATE restaurants SET price_range = '{$new_price_range}' WHERE id = {$this->getId()};");
+                $this->setPriceRange($new_price_range);
+            }
+
+            function updateNeighborhood($new_neighborhood)
+            {
+                $GLOBALS['DB']->exec("UPDATE restaurants SET neighborhood = '{$new_neighborhood}' WHERE id = {$this->getId()};");
+                $this->setNeighborhood($new_neighborhood);
             }
 
             function delete()

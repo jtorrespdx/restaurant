@@ -176,7 +176,7 @@
             $this->assertEquals([$test_restaurant2], $result);
         }
 
-        function test_Update()
+        function test_UpdateName()
         {
             //arrange
             $type = "Tacos";
@@ -194,10 +194,58 @@
             $new_name = "Natalies";
 
             //act
-            $test_restaurant->update($new_name);
+            $test_restaurant->updateName($new_name);
 
             //assert
             $this->assertEquals("Natalies", $test_restaurant->getName());
+        }
+
+        function test_UpdatePriceRange()
+        {
+            //arrange
+            $type = "Tacos";
+            $id = null;
+            $test_cuisine = new Cuisine($type, $id);
+            $test_cuisine->save();
+
+            $name = "Nathans";
+            $cuisine_id = $test_cuisine->getId();
+            $price_range = 1;
+            $neighborhood = "Felony Flats";
+            $test_restaurant = new Restaurant($name, $id, $cuisine_id, $price_range, $neighborhood);
+            $test_restaurant->save();
+
+            $new_price_range = 4;
+
+            //act
+            $test_restaurant->updatePriceRange($new_price_range);
+
+            //assert
+            $this->assertEquals(4, $test_restaurant->getPriceRange());
+        }
+
+        function test_UpdateNeighborhood()
+        {
+            //arrange
+            $type = "Tacos";
+            $id = null;
+            $test_cuisine = new Cuisine($type, $id);
+            $test_cuisine->save();
+
+            $name = "Nathans";
+            $cuisine_id = $test_cuisine->getId();
+            $price_range = 1;
+            $neighborhood = "Felony Flats";
+            $test_restaurant = new Restaurant($name, $id, $cuisine_id, $price_range, $neighborhood);
+            $test_restaurant->save();
+
+            $new_neighborhood = "Foster";
+
+            //act
+            $test_restaurant->updateNeighborhood($new_neighborhood);
+
+            //assert
+            $this->assertEquals("Foster", $test_restaurant->getNeighborhood());
         }
 
         function testDelete()
