@@ -148,6 +148,68 @@
             $this->assertEquals($test_Cuisine, $result);
         }
 
+        function test_Update()
+        {
+          //Arrange
+          $type = "Tacos";
+          $id = null;
+          $test_cuisine = new Cuisine($type, $id);
+          $test_cuisine->save();
+
+          $new_type = "Greek";
+
+          //Act
+          $test_cuisine->update($new_type);
+
+          //Assert
+          $this->assertEquals("Greek", $test_cuisine->getType());
+        }
+
+        function test_delete()
+        {
+            //arrange
+            $type = "Tacos";
+            $id = null;
+            $test_cuisine = new Cuisine($type, $id);
+            $test_cuisine->save();
+
+            $type2 = "Greek";
+            $test_cuisine2 = new Cuisine($type2, $id);
+            $test_cuisine2->save();
+
+            //act
+            $test_cuisine->delete();
+
+            //assert
+            $this->assertEquals([$test_cuisine2], Cuisine::getAll());
+        }
+
+        function test_deleteCuisineRestaurants()
+        {
+            //arrange
+            $type = "Tacos";
+            $id = null;
+            $test_cuisine = new Cuisine($type, $id);
+            $test_cuisine->save();
+
+            $name = "Mercado";
+            $cuisine_id = $test_cuisine->getId();
+            $price_range = 3;
+            $neighborhood = "Felony Flats";
+            $test_restaurant = new Restaurant($name, $id, $cuisine_id, $price_range, $neighborhood);
+            $test_restaurant->save();
+
+            //act
+            $test_cuisine->delete();
+
+            //assert
+            $this->assertEquals([], Restaurant::getAll());        
+
+        }
+
+
+
+
     }
 
 
