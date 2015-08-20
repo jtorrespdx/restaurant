@@ -8,7 +8,7 @@
     require_once "src/Restaurant.php";
     require_once "src/Cuisine.php";
 
-    $server = 'mysql:host=localhost;dbname=restaurant_DB_test';
+    $server = 'mysql:host=localhost;dbname=restaurant_db_test';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
@@ -29,7 +29,7 @@
             $test_cuisine = new Cuisine($type, $id);
             $test_cuisine->save();
 
-            $name = "Nathan's";
+            $name = "Nathans";
             $cuisine_id = $test_cuisine->getId();
             $price_range = 1;
             $neighborhood = "Felony Flats";
@@ -51,7 +51,7 @@
             $test_cuisine = new Cuisine($type, $id);
             $test_cuisine->save();
 
-            $name = "Nathan's";
+            $name = "Nathans";
             $cuisine_id = $test_cuisine->getId();
             $price_range = 1;
             $neighborhood = "Felony Flats";
@@ -74,7 +74,7 @@
             $test_cuisine = new Cuisine($type, $id);
             $test_cuisine->save();
 
-            $name = "Nathan's";
+            $name = "Nathans";
             $price_range = 1;
             $neighborhood = "Felony Flats";
             $cuisine_id = $test_cuisine->getId();
@@ -96,14 +96,14 @@
             $test_cuisine = new Cuisine($type, $id);
             $test_cuisine->save();
 
-            $name = "Nathan's";
+            $name = "Nathans";
             $cuisine_id = $test_cuisine->getId();
             $price_range = 1;
             $neighborhood = "Felony Flats";
             $test_restaurant = new Restaurant($name, $id, $cuisine_id, $price_range, $neighborhood);
             $test_restaurant->save();
 
-            $name2 = "Jose's";
+            $name2 = "Joses";
             $price_range = 2;
             $neighborhood = "Buckman";
             $cuisine_id = $test_cuisine->getId();
@@ -125,14 +125,14 @@
             $test_cuisine = new Cuisine($type, $id);
             $test_cuisine->save();
 
-            $name = "Nathan's";
+            $name = "Nathans";
             $cuisine_id = $test_cuisine->getId();
             $price_range = 1;
             $neighborhood = "Felony Flats";
             $test_restaurant = new Restaurant($name, $id, $cuisine_id, $price_range, $neighborhood);
             $test_restaurant->save();
 
-            $name2 = "Jose's";
+            $name2 = "Joses";
             $price_range = 2;
             $neighborhood = "Buckman";
             $cuisine_id = $test_cuisine->getId();
@@ -147,7 +147,7 @@
             $this->assertEquals([], $result);
         }
 
-        function test_find()
+        function test_findRestaurantName()
         {
             //arrange
             $type = "Tacos";
@@ -155,14 +155,14 @@
             $test_cuisine = new Cuisine($type, $id);
             $test_cuisine->save();
 
-            $name = "Nathan's";
+            $name = "Nathans";
             $cuisine_id = $test_cuisine->getId();
             $price_range = 1;
             $neighborhood = "Felony Flats";
             $test_restaurant = new Restaurant($name, $id, $cuisine_id, $price_range, $neighborhood);
             $test_restaurant->save();
 
-            $name2 = "Jose's";
+            $name2 = "Joses";
             $cuisine_id = $test_cuisine->getId();
             $price_range = 2;
             $neighborhood = "Buckman";
@@ -170,10 +170,10 @@
             $test_restaurant2->save();
 
             //act
-            $result = Restaurant::findRestaurantName($test_restaurant2->getId());
+            $result = Restaurant::findRestaurantName("jose");
 
             //assert
-            $this->assertEquals($test_restaurant2, $result);
+            $this->assertEquals([$test_restaurant2], $result);
         }
 
 

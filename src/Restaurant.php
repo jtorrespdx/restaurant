@@ -58,7 +58,7 @@
 
             function save()
             {
-                $GLOBALS['DB']->exec("INSERT INTO restaurants(name, cuisine_id, price_range, neighborhood) VALUES ('{$this->getName()}', {$this->getCuisineId()}, {$this->getPriceRange()}, '{this->getNeighborhood()}')");
+                $GLOBALS['DB']->exec("INSERT INTO restaurants (name, cuisine_id, price_range, neighborhood) VALUES ('{$this->getName()}', {$this->getCuisineId()}, {$this->getPriceRange()}, '{$this->getNeighborhood()}')");
                 $this->id = $GLOBALS['DB']->lastInsertId();
             }
 
@@ -89,7 +89,7 @@
                 $restaurants = Restaurant::getAll();
                 foreach($restaurants as $restaurant) {
                     $restaurant_name = $restaurant->getName();
-                    if (strpos($restaurant_name, $search_restaurant) !== false) {
+                    if (strpos(strtolower($restaurant_name), strtolower($search_restaurant)) !== false) {
                         array_push($found_restaurants, $restaurant);
                     }
                 }

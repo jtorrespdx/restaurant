@@ -70,8 +70,10 @@
         {
             $found_cuisine = null;
             $cuisines = Cuisine::getAll();
+            var_dump($cuisines);
             foreach($cuisines as $cuisine) {
-                if ($cuisine == $search_id) {
+              $cuisine_id = $cuisine->getId();
+                if ($cuisine_id == $search_id) {
                     $found_cuisine = $cuisine;
                 }
             }
