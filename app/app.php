@@ -55,15 +55,20 @@
     return $app['twig']->render('index.html.twig', array('cuisines' => Cuisine::getAll()));
     });
 
-    $app->get("/cuisines/{id}/edit", function($id) use ($app) {
-        $cuisine = Cuisine::find($id);
-        return $app['twig']->render('cuisine_edit.html.twig', array('cuisines' => $cuisine));
+    $app->get("/restaurants/{id}/edit", function($id) use ($app) {
+        // $restaurant = new Restaurant($_POST['name'], $id = null, $cuisine_id, $_POST['price_range'], $_POST['neighborhood']);
+        $restaurant = Restaurant::find($id);
+        return $app['twig']->render('restaurant_edit.html.twig', array('restaurant' => $restaurant));
     });
 
-    $app->patch("/cuisines/{id}", function($id) use ($app) {
-        $name = $_POST['type'];
-        $cuisine = Cuisine::find($id);
-        $cuisine->update($type);
+    $app->patch("/restaurants/{id}", function($id) use ($app) {
+        $name = $_POST['name'];
+        $price_range = $_POST['price_range'];
+        $neighborhood = $_POST['neighborhood'];
+        $restaurant = Restaurant::find($id);
+        $restaurant->updateName($name);
+        $restaurant->updatePriceRange($price_range);
+        $restaurant->updateNeighborhood($neighborhood);
         return $app['twig']->render('cuisine.html.twig', array('cuisines' => $cuisine, 'restaurants' => $cuisine->getRestaurants()));
     });
 

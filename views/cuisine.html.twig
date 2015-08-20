@@ -11,7 +11,7 @@
                 <p> Here are the restaurants:</p>
                 <ul>
                     {% for restaurant in restaurants %}
-                        <li>{{ restaurant.getName }} {{ restaurant.getPriceRange }} {{ restaurant.getNeighborhood }}</li>
+                        <li>{{ restaurant.getName }} {{ restaurant.getPriceRange }} {{ restaurant.getNeighborhood }} <p><a href="/restaurants/{{ restaurant.getId }}/edit">Edit this restaurant</a></p></li>
                     {% endfor %}
                 </ul>
             {% endif %}

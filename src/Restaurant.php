@@ -62,6 +62,19 @@
                 $this->id = $GLOBALS['DB']->lastInsertId();
             }
 
+            static function find($search_id)
+            {
+                $found_restauraunt = null;
+                $restaurants = Restaurant::getAll();
+                foreach($restaurants as $restaurant) {
+                    $restaurant_id = $restaurant->getId();
+                    if ($restaurant_id == $search_id) {
+                        $found_restaurant = $restaurant;
+                    }
+                }
+                return $found_restaurant;
+            }
+
             static function getAll()
             {
                 $returned_restaurants = $GLOBALS['DB']->query("SELECT * FROM restaurants;");
